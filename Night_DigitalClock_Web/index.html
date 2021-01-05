@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="NavyaNGowda, Navya N Gowda, Navya Nanjundaiah" name="keywords">
+  <meta content="Developer | Designer &amp; " name="description">
+  <title>
+    Night Digital Watch Web
+  </title>
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
+</head>
+<style>
+  body {
+    background-color: #121212;
+  }
+
+  #clock {
+    border-radius: 112px;
+    position: relative;
+    top: 10px;
+    font-weight: bold;
+    font-family: auto;
+    color: #66ff99;
+    font-size: 100px;
+    text-align: center;
+    /* padding-top: 1%;
+      padding-bottom: 207px; */
+  }
+
+  #monsdayyear {
+    font-family: auto;
+    color: #66ff99;
+    font-size: 56px;
+    text-align: center;
+    padding-top: 3%;
+
+  }
+
+  .dot {
+    padding: 25px;
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 51px
+  }
+
+  .week {
+    font-size: xx-large;
+    color: #e0e0e061;
+    margin: 21px;
+    height: 25px;
+    display: inline-block;
+  }
+
+  .todaysDay {
+    color: #66ff99;
+  }
+
+
+  /* Paragraph fix */
+
+  #clock p {
+    margin: 5px;
+  }
+
+  /* Show time units and seprarator in a line */
+
+  #clock .time-unit,
+  #clock .separator {
+    display: inline-block;
+    text-align: center;
+    margin: 0 0.25em;
+  }
+
+  /* Show values using large text */
+
+  #clock .time-unit .large {
+    display: block;
+    font-size: 2em;
+  }
+
+  /* Show values using smaller text */
+
+  #clock .time-unit .small {
+    display: block;
+    font-size: 0.5em;
+  }
+
+  /* Align the separator with values */
+
+  #clock .separator {
+    font-size: 2em;
+    vertical-align: top;
+    margin-top: -0.1em;
+  }
+
+  .textalign {
+    text-align: center;
+  }
+
+
+  /* btn color class*/
+
+  .blueBtn {
+    background-color: rgb(4, 12, 83);
+  }
+
+  .pinkBtn {
+    background-color: rgb(75, 0, 86);
+  }
+
+  .orangeBtn {
+    background-color: rgb(107, 1, 1);
+  }
+
+  .greenBtn {
+    background-color: #66ff99;
+    border: 0.5vw solid white
+  }
+
+  .whiteBtn {
+    background-color: rgb(106, 105, 105)66ff99;
+  }
+
+  .yellowBtn {
+    background-color: rgb(85, 85, 1);
+  }
+
+  .blinking {
+
+    animation: opacity 2s ease-in-out infinite;
+    opacity: 1;
+  }
+
+  @keyframes opacity {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .btnmain {
+    margin-top: 13%;
+  }
+
+  @media only screen and (max-width:480px) {
+    .dot {
+      padding: 11px;
+      height: 25px;
+      width: 25px;
+      /* background-color: #bbb; */
+      border-radius: 50%;
+      display: inline-block;
+      margin: 40px;
+    }
+    #clock {
+      font-size: 30px;
+      color: #66ff99;
+      border-radius: 112px;
+      position: relative;
+      top: 30px;
+    }
+
+    .btnmain {
+      margin-top: 30%;
+    }
+  }
+</style>
+
+<body>
+  <!-- MONTH DAY YEAR -->
+  <div id="monsdayyear">
+  </div>
+  <!-- Week days -->
+  <div id="days" class="textalign">
+    <span class="mon week">Mon</span>
+    <span class="tue week">Tue</span>
+    <span class="wed week">Wed</span>
+    <span class="thu week">Thu</span>
+    <span class="fri week">Fri</span>
+    <span class="sat week">Sat</span>
+    <span class="sun week">Sun</span>
+  </div>
+
+  <div id="clockmain" class="textalign">
+    <!-- Time display-->
+    <div id="clock">
+      <!-- Time units wrapper -->
+      <span class="wrap-time">
+        <!-- Time unit - Hours -->
+        <span class="time-unit">
+          <span class="large hours">00</span>
+          <span class="small">HOURS</span>
+        </span>
+        <span class="separator blinking">:</span>
+        <!-- Time unit - Minutes -->
+        <span class="time-unit">
+          <span class="large minutes">00</span>
+          <span class="small">MINUTES</span>
+        </span>
+        <!-- <span class="separator blinking">:</span> -->
+        <!-- Time unit - Seconds -->
+        <!-- <span class="time-unit">
+			<span class="large seconds">00</span>
+			<span class="small">SECONDS</span>
+		</span> -->
+        <!-- Time unit - Period -->
+        <span class="time-unit">
+          <span class="large period">AM</span>
+          <span class="small">PERIOD</span>
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <!-- button view for color change-->
+  <div class="textalign btnmain">
+    <span class="dot greenBtn" id="greenBtn" onclick="greenBtn()"></span>
+    <span class="dot blueBtn" id="blueBtn" onclick="blueBtn()"> </span>
+    <span class="dot pinkBtn" id="pinkBtn" onclick="pinkBtn()"></span>
+    <span class="dot orangeBtn" id="orangeBtn" onclick="orangeBtn()"></span>
+    <span class="dot yellowBtn" id="yellowBtn" onclick="yellowBtn()"></span>
+    <span class="dot whiteBtn" id="whiteBtn" onclick="whiteBtn()"></span>
+    <!-- <span class="dot yellowBtn" id="yellowBtn" onclick="yellowBtn()"></span>
+    <span class="dot whiteBtn" id="whiteBtn" onclick="whiteBtn()"></span> -->
+
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+  // The week days
+  //const weekDay = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var weekday = new Array(7);
+  //var curentday;
+  weekday[0] = "sun";
+  weekday[1] = "mon";
+  weekday[2] = "tue";
+  weekday[3] = "wed";
+  weekday[4] = "thu";
+  weekday[5] = "fri";
+  weekday[6] = "sat";
+  // The Clock Ticker
+  function digitalclockTicker() {
+    // Clock units
+    var date = new Date();
+    var day = date.getDay();
+    var hrs = date.getHours();
+    var mins = date.getMinutes();
+    var secs = date.getSeconds();
+
+    // Update hours value if greater than 12
+    if (hrs > 12) {
+      hrs = hrs - 12;
+      document.querySelector('#clock .period').innerHTML = 'PM';
+    }
+    else {
+      document.querySelector('#clock .period').innerHTML = 'AM';
+    }
+
+    // Pad the single digit units by 0
+    hrs = hrs < 10 ? "0" + hrs : hrs;
+    mins = mins < 10 ? "0" + mins : mins;
+    secs = secs < 10 ? "0" + secs : secs;
+
+    // Refresh the unit values
+    document.querySelector('#clock .hours').innerHTML = hrs;
+    document.querySelector('#clock .minutes').innerHTML = mins;
+    document.getElementsByClassName(weekday[date.getDay()])[0].classList.add("todaysDay");
+    document.getElementById("monsdayyear").innerText = months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear();
+
+    // Refresh the clock every 1 second
+    //requestAnimationFrame(digitalclockTicker);
+  }
+
+  // Start the clock
+  digitalclockTicker();
+
+
+  /* Color change logic*/
+  function blueBtn() {
+    document.getElementById("monsdayyear").style.color = "#00b7cf";
+    document.getElementById("clockmain").style.backgroundColor = "#000818)";
+    document.getElementById("clock").style.color = "#00b7cf";
+    $("#blueBtn").css("border", "white solid 1vw");
+    $("#greenBtn").css("border", "none");
+    $("#pinkBtn").css("border", "none");
+    $("#orangeBtn").css("border", "none");
+    $(".todaysDay").css("color", "#00b7cf");
+    $("#yellowBtn").css("border", "none");
+    $("#whiteBtn").css("border", "none");
+  }
+
+  function pinkBtn() {
+    document.getElementById("monsdayyear").style.color = "#e500ff";
+    document.getElementById("clockmain").style.backgroundColor = "#120015";
+    document.getElementById("clock").style.color = "#e500ff";
+    document.getElementById("pinkBtn").style.color = "#e500ff";
+    $("#pinkBtn").css("border", "white solid 1vw");
+    $("#greenBtn").css("border", "none");
+    $(".todaysDay").css("color", "#e500ff");
+    $("#orangeBtn").css("border", "none");
+    $("#blueBtn").css("border", "none");
+    $("#yellowBtn").css("border", "none");
+    $("#whiteBtn").css("border", "none");
+
+  }
+
+  function orangeBtn() {
+    document.getElementById("monsdayyear").style.color = "#f00";
+    document.getElementById("clockmain").style.backgroundColor = "#1b0e00";
+    document.getElementById("clock").style.color = "#f00";
+    $("#orangeBtn").css("border", "white solid 1vw");
+    $("#greenBtn").css("border", "none");
+    $(".todaysDay").css("color", "#f00");
+    $("#pinkBtn").css("border", "none");
+    $("#blueBtn").css("border", "none");
+    $("#yellowBtn").css("border", "none");
+    $("#whiteBtn").css("border", "none");
+  }
+
+  function yellowBtn() {
+    document.getElementById("monsdayyear").style.color = "#ff0";
+    document.getElementById("clockmain").style.backgroundColor = "#110";
+    document.getElementById("clock").style.color = "#ff0";
+    $("#yellowBtn").css("border", "white solid 1vw");
+    $("#greenBtn").css("border", "none");
+    $(".todaysDay").css("color", "#ff0");
+    $("#pinkBtn").css("border", "none");
+    $("#blueBtn").css("border", "none");
+    $("#orangeBtn").css("border", "none");
+    $("#whiteBtn").css("border", "none");
+  }
+
+  function greenBtn() {
+    document.getElementById("monsdayyear").style.color = "#66ff99";
+    document.getElementById("clockmain").style.backgroundColor = "#011705";
+    document.getElementById("clock").style.color = "#66ff99";
+    $("#greenBtn").css("border", "white solid 1vw");
+    $("#whiteBtn").css("border", "none");
+    $(".todaysDay").css("color", "#66ff99");
+    $("#pinkBtn").css("border", "none");
+    $("#blueBtn").css("border", "none");
+    $("#orangeBtn").css("border", "none");
+    $("#yellowBtn").css("border", "none");
+  }
+
+  function whiteBtn() {
+    document.getElementById("monsdayyear").style.color = "#dbdbdb";
+    document.getElementById("clockmain").style.backgroundColor = "#140000";
+    document.getElementById("clock").style.color = "#dbdbdb";
+    $("#whiteBtn").css("border", "white solid 1vw");
+    $("#greenBtn").css("border", "none");
+    $(".todaysDay").css("color", "#dbdbdb");
+    $("#pinkBtn").css("border", "none");
+    $("#blueBtn").css("border", "none");
+    $("#orangeBtn").css("border", "none");
+    $("#yellowBtn").css("border", "none");
+  }
+
+
+</script>
+
+</html>
