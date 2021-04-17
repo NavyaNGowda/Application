@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>
+    Night Digital Watch Web
+  </title>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="description" content="NavyaNGowda, Navya N Gowda, Navya Nanjundaiah Portfolio">
+
+  <meta name="keywords" content="HTML, CSS, JavaScript, SQL, JAVA , MCS ">
+
+  <meta name="Navya Nanjundaiah" content="Developer | Designer ">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- <meta http-equiv="refresh" content="30"> -->
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
+</head>
+<style>
+  button {
+    width: 100px;
+    height: 50px;
+    background: #21c0fc;
+    margin: 10px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+  }
+  .button {
+    width: 100px;
+    height: 50px;
+    background: #21c0fc;
+    margin: 10px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+  }
+</style>
+
+<body>
+  Number:
+  <br>
+  <input  type="number" name="first" id="first">
+
+  <input class="button" type="button" value="Send" onclick="createDynamicButtons()">
+  <div id="here"></div>
+  <div id="buttonsWrapper"></div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+let buttons={};
+let wrapper = document.getElementById("buttonsWrapper");
+  
+function updateClick(buttonId){
+	if(buttons.hasOwnProperty(buttonId)){
+	  buttons[buttonId]+=1;
+    alert("Count"+buttons[buttonId]);
+    updateUI();
+  }
+}
+function updateUI(){
+  let updatedButtons = '';
+	Object.keys(buttons).map(buttonId=>{
+		updatedButtons+= `<button onclick="updateClick(${buttonId})">Button-${buttonId} </button>`;
+  });
+  wrapper.innerHTML=updatedButtons;
+}
+function createDynamicButtons(){
+   buttons={};
+    let i=1,
+    total = document.getElementById("first").value || 0;
+		for(i;i<=total;i++){
+    	buttons[i]=0;
+    }
+    updateUI();
+}
+
+
+</script>
+
+</html>
